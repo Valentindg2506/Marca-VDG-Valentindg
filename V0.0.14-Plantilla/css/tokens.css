@@ -1,0 +1,183 @@
+/* VDG — tokens de diseño. Fuente única de colores, tipografía, tamaños, radios, sombras y movimiento.
+   Es el mismo archivo que «Marca VDG/design-system/tokens.css» (allí con las fuentes en ../assets/fonts/). */
+/* Fuentes alojadas en el proyecto (licencia OFL en fonts/): no se envía la IP del visitante a terceros. */
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/instrument-sans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Mono";
+  src: url("../fonts/dm-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Mono";
+  src: url("../fonts/dm-mono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  /* Colores de tema */
+  --color-bg: #f7f6f8;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8f7f9;
+  --color-surface-hover: #f1eff3;
+  --color-ink: #1d1c22;
+  --color-text: var(--color-ink);
+  --color-text-muted: #6e6b76;
+  --color-text-subtle: #8e8797;
+  --color-icon: #76727c;
+  --color-border: #f0eef1;
+  --color-border-strong: #e9e6eb;
+  --color-accent: #ed533e;
+  --color-accent-hover: #d93626;
+  --color-accent-soft: #fff0ed;
+  --color-danger: var(--color-accent);
+  --color-danger-hover: var(--color-accent-hover);
+  --color-danger-soft: var(--color-accent-soft);
+  --color-on-accent: #ffffff;
+  --color-focus-ring: rgba(237,83,62,.45);
+  --color-success: #2ca67c;
+  --color-success-soft: #e8f8f2;
+  --color-overlay: rgba(18,15,22,.53);
+  --color-chart-primary: #ef6c59;
+  /* Tarjeta de objetivo (igual en ambos temas) */
+  --gradient-goal: linear-gradient(122deg,#f16a50 0%,#ed4e36 48%,#dc3a28 100%);
+  --color-goal-text-soft: #ffd5ce;
+  --color-goal-button-hover: #ffeee9;
+  /* Avatares */
+  --color-avatar-bg: #ead6c6;
+  --color-avatar-text: #5c3530;
+  --color-avatar-1-bg: #e4c0ad;
+  --color-avatar-1-text: #663d38;
+  --color-avatar-2-bg: #d2c4e1;
+  --color-avatar-2-text: #514360;
+  --color-avatar-3-bg: #c2dfd5;
+  --color-avatar-3-text: #3c655a;
+  /* Tipografía, composición y elevación */
+  --font-ui: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius-card: 18px;
+  --radius-control: 11px;
+  --radius-pill: 999px;
+  --space-layout: clamp(18px, 1.8vw, 34px);
+  --shadow-card: 0 10px 35px rgba(41,30,50,.025);
+  --ease-ui: cubic-bezier(.23,1,.32,1);
+  /* Colores del logotipo original (solo en el logo con brillo, nunca en interfaz) */
+  --color-logo-blue: #0530f5;
+  --color-logo-silver: #90a8d0;
+  --color-logo-night: #0d0f1a;
+  /* Escala tipográfica (px). Mínimo legible: 11 px. */
+  --text-display: 49px;
+  --text-figure-lg: 33px;
+  --text-h1: 31px;
+  --text-figure: 26px;
+  --text-h2: 19px;
+  --text-h3: 15px;
+  --text-body: 13px;
+  --text-small: 12px;
+  --text-caption: 11px;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading-tight: 1.25;
+  --leading-body: 1.5;
+  /* Espaciado: diez pasos. 15 separa tarjetas, 22 es el relleno de una tarjeta, 34 separa bloques. */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 15px;
+  --space-8: 18px;
+  --space-9: 22px;
+  --space-10: 34px;
+  /* Radios: grandes en superficies, pequeños en etiquetas; la píldora solo para filtros y selectores */
+  --radius-tag: 6px;
+  --radius-icon: 10px;
+  --radius-tile: 14px;
+  /* Elevación */
+  --shadow-selected: 0 1px 7px rgba(0,0,0,.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,.04);
+  --shadow-menu: 0 20px 60px rgba(20,15,23,.13);
+  --shadow-toast: 0 12px 36px rgba(0,0,0,.17);
+  --shadow-modal: 0 30px 100px rgba(0,0,0,.23);
+  --shadow-accent: 0 14px 35px rgba(219,65,42,.12);
+  /* Liquid Glass: solo la capa de navegación (cabecera, menú lateral, barra del móvil y menús).
+     Normal para controles; grueso (más opaco, más desenfoque y más sombra) para menús y el menú lateral. */
+  --glass-bg: rgba(255,255,255,.56);
+  --glass-bg-thick: rgba(255,255,255,.86);
+  --glass-bg-frosted: rgba(250,249,251,.94);
+  --glass-blur: 4px;
+  --glass-blur-thick: 24px;
+  --glass-saturate: 190%;
+  --glass-lens: 40;
+  --glass-rim: linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,255,255,.2) 38%,rgba(255,255,255,.08) 62%,rgba(255,255,255,.7));
+  --glass-highlight: inset 0 1px 1px rgba(255,255,255,.75), inset 0 -1px 1px rgba(255,255,255,.3);
+  --glass-shadow: 0 6px 20px -8px rgba(29,28,34,.16), 0 0 0 .5px rgba(29,28,34,.06);
+  --glass-shadow-raised: 0 14px 36px -10px rgba(29,28,34,.26), 0 0 0 .5px rgba(29,28,34,.08);
+  --glass-fill: rgba(255,255,255,.55);
+  --glass-glow: rgba(255,255,255,.6);
+  /* Movimiento */
+  --duration-fast: .15s;
+  --duration-base: .2s;
+  --duration-slow: .3s;
+  --duration-chart: .45s;
+  color-scheme: light;
+  font-family: var(--font-ui);
+}
+:root[data-theme="dark"] {
+  --color-bg: #121116;
+  --color-surface: #1b1a20;
+  --color-surface-alt: #242229;
+  --color-surface-hover: #2e2b34;
+  --color-text: #f4f2f6;
+  --color-text-muted: #a7a2ae;
+  --color-text-subtle: #7e7887;
+  --color-icon: #a7a2ae;
+  --color-border: #2c2a32;
+  --color-border-strong: #39363e;
+  --color-accent: #f65d49;
+  --color-accent-hover: #f16a55;
+  --color-accent-soft: #3d2729;
+  --color-success: #61d2a6;
+  --color-success-soft: #17382c;
+  --shadow-card: 0 20px 45px rgba(0,0,0,.06);
+  --glass-bg: rgba(40,38,46,.46);
+  --glass-bg-thick: rgba(36,34,42,.84);
+  --glass-bg-frosted: rgba(30,29,35,.95);
+  --glass-rim: linear-gradient(135deg,rgba(255,255,255,.32),rgba(255,255,255,.06) 38%,rgba(255,255,255,.02) 62%,rgba(255,255,255,.18));
+  --glass-highlight: inset 0 1px 1px rgba(255,255,255,.14), inset 0 -1px 1px rgba(255,255,255,.04);
+  --glass-shadow: 0 8px 24px -8px rgba(0,0,0,.5), 0 0 0 .5px rgba(0,0,0,.4);
+  --glass-shadow-raised: 0 16px 40px -10px rgba(0,0,0,.65), 0 0 0 .5px rgba(0,0,0,.5);
+  --glass-fill: rgba(255,255,255,.1);
+  --glass-glow: rgba(255,255,255,.14);
+  color-scheme: dark;
+}
+/* Al imprimir siempre en claro, aunque la pantalla esté en modo oscuro. */
+@media print {
+  :root,:root[data-theme="dark"] {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-alt: #f8f7f9;
+    --color-text: #1d1c22;
+    --color-text-muted: #6f6c77;
+    --color-border: #e4e1e7;
+    --color-border-strong: #cfcbd4;
+    --color-accent: #ed533e;
+    --color-success: #1f8a63;
+    --glass-bg: #ffffff;
+    --glass-bg-thick: #ffffff;
+    --glass-shadow: none;
+    --glass-shadow-raised: none;
+    color-scheme: light;
+  }
+}
