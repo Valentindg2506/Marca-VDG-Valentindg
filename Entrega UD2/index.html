@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Entrega UD2 · valentindg</title>
+  <meta name="description" content="Entrega de la UD2 de Desarrollo de Interfaces: CRM con comandos de voz y dictado, y ejercicios de gestos, detector facial, comandos por gestos y AR/VR.">
+  <link rel="icon" href="CRM/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="Ejercicios/shared/ejercicios.css">
+  <style>
+    .parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); }
+    .part { display: grid; gap: var(--space-6); align-content: start; text-decoration: none; transition: transform .2s var(--ease-ui), box-shadow .2s; }
+    .part:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .part ul { margin: 0; padding-left: 18px; color: var(--color-text-muted); display: grid; gap: var(--space-2); }
+    .criteria { width: 100%; border-collapse: collapse; font-size: var(--text-small); }
+    .criteria th, .criteria td { padding: var(--space-5) var(--space-4); border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+    .criteria th { color: var(--color-text-muted); font-size: var(--text-caption); }
+    .criteria td:first-child { font-family: var(--font-mono); color: var(--color-accent); white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <main class="ex-main">
+    <div class="ex-head">
+      <span class="eyebrow">Desarrollo de Interfaces · UD2 · Generación de interfaces naturales de usuario</span>
+      <h1>Entrega UD2: interfaces naturales sobre el CRM</h1>
+      <p>Base: la última versión de la plantilla del CRM (V0.0.14). La voz y el dictado están integrados dentro de la interfaz; el resto de interfaces naturales están en la carpeta de ejercicios.</p>
+    </div>
+
+    <div class="parts">
+      <a class="card part" href="CRM/index.html">
+        <span class="tag accent">Dentro de la interfaz</span>
+        <h2>CRM con voz y dictado</h2>
+        <ul>
+          <li>Micrófono en la barra superior o tecla <span class="mono">V</span>: navegar, crear, buscar, preguntar y cambiar preferencias hablando.</li>
+          <li>Tareas dictadas de una vez: «recuérdame llamar a Clínica Norte mañana».</li>
+          <li>Dictado con puntuación hablada en notas, tareas, clientes, facturas, búsqueda y asistente.</li>
+          <li>Respuestas habladas y escucha continua, configurables en Ajustes.</li>
+        </ul>
+        <span class="btn accent">Abrir el CRM</span>
+      </a>
+      <a class="card part" href="Ejercicios/index.html">
+        <span class="tag">Carpeta aparte</span>
+        <h2>Ejercicios de interfaces naturales</h2>
+        <ul>
+          <li>01 · Gestos táctiles y del dispositivo.</li>
+          <li>02 · Detector facial.</li>
+          <li>03 · Comandos por gestos de la mano y del cuerpo.</li>
+          <li>04 · Realidad aumentada y realidad virtual.</li>
+        </ul>
+        <span class="btn dark">Ver los ejercicios</span>
+      </a>
+    </div>
+
+    <section class="card" style="margin-top:var(--space-8)">
+      <h2 style="margin-bottom:var(--space-6)">Criterios de evaluación (RA2)</h2>
+      <table class="criteria">
+        <thead><tr><th>Criterio</th><th>Enunciado</th><th>Dónde se cumple</th></tr></thead>
+        <tbody>
+          <tr><td>RA2 a</td><td>Herramientas de aprendizaje automático para interfaces</td><td>Web Speech API (reconocimiento y síntesis), MediaPipe Tasks Vision (Face Landmarker, Gesture Recognizer, Pose Landmarker), WebXR. Explicadas en el README.</td></tr>
+          <tr><td>RA2 b</td><td>Interfaz natural con las herramientas disponibles</td><td>Las cinco piezas: CRM por voz y los cuatro ejercicios.</td></tr>
+          <tr><td>RA2 c</td><td>Reconocimiento de voz para implementar acciones</td><td>CRM: comandos de voz y dictado (<span class="mono">CRM/js/voice/</span>).</td></tr>
+          <tr><td>RA2 d</td><td>Detección del movimiento del cuerpo</td><td>Ejercicio 03 (posturas y barrido de la mano) y ejercicio 01 (agitar el móvil).</td></tr>
+          <tr><td>RA2 e</td><td>Detección de partes del cuerpo</td><td>Ejercicio 02 (cara, ojos, boca, giro de cabeza) y ejercicio 03 (manos y dedos).</td></tr>
+          <tr><td>RA2 f</td><td>Realidad aumentada en la interfaz</td><td>Ejercicio 04 (AR con hit-test o sobre la cámara, y VR).</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <script type="module">
+    import { applyTheme } from './Ejercicios/shared/common.js';
+    import { logo } from './CRM/js/components/logo.js';
+    applyTheme();
+    const top = document.createElement('header');
+    top.className = 'ex-top';
+    top.innerHTML = `<span class="ex-brand">${logo().replace('<svg', '<svg style="height:22px;width:auto"')}<span class="muted">· Entrega UD2</span></span>`;
+    document.body.prepend(top);
+  </script>
+</body>
+</html>

@@ -1,0 +1,1349 @@
+{
+ "company": {
+  "name": "Ferrer & Moll Consultoría Comercial S.L.",
+  "cif": "B46872131",
+  "type": "company",
+  "irpf": 0,
+  "address": "Calle de Colón, 18, 4.º B",
+  "postcode": "46004",
+  "city": "Valencia",
+  "iban": "ES37 9999 0461 2002 0183 7746",
+  "paymentDays": 30
+ },
+ "team": [
+  {
+   "id": "lf",
+   "name": "Lucía Ferrer",
+   "role": "Dirección comercial"
+  },
+  {
+   "id": "jm",
+   "name": "Javier Moll",
+   "role": "Cuentas clave"
+  },
+  {
+   "id": "ar",
+   "name": "Ainhoa Ruiz",
+   "role": "Preventa"
+  }
+ ],
+ "clients": [
+  {
+   "id": "arrieta",
+   "name": "Talleres Arrieta S.L.",
+   "cif": "B48312078",
+   "sector": "Industria",
+   "address": "Polígono Ugaldeguren III, parcela 9",
+   "postcode": "48170",
+   "city": "Zamudio",
+   "status": "active",
+   "owner": "jm",
+   "lastContact": 0,
+   "billed": 48320,
+   "contacts": [
+    {
+     "name": "Iñaki Arrieta",
+     "role": "Gerente"
+    },
+    {
+     "name": "Maite Uriarte",
+     "role": "Administración"
+    }
+   ]
+  },
+  {
+   "id": "turia",
+   "name": "Grupo Hotelero Turia S.A.",
+   "cif": "A96128749",
+   "sector": "Hostelería",
+   "address": "Avenida del Puerto, 214",
+   "postcode": "46023",
+   "city": "Valencia",
+   "status": "active",
+   "owner": "lf",
+   "lastContact": -1,
+   "billed": 96410,
+   "contacts": [
+    {
+     "name": "Marta Soler",
+     "role": "Directora de operaciones"
+    },
+    {
+     "name": "Vicent Ferrando",
+     "role": "Sistemas"
+    }
+   ]
+  },
+  {
+   "id": "ribera",
+   "name": "Clínica Dental Ribera S.L.P.",
+   "cif": "B50193663",
+   "sector": "Salud",
+   "address": "Paseo de la Constitución, 31, 1.º",
+   "postcode": "50008",
+   "city": "Zaragoza",
+   "status": "active",
+   "owner": "ar",
+   "lastContact": -3,
+   "billed": 21780,
+   "contacts": [
+    {
+     "name": "Elena Ribera",
+     "role": "Odontóloga y socia"
+    }
+   ]
+  },
+  {
+   "id": "montsant",
+   "name": "Bodegas Montsant Vell S.L.",
+   "cif": "B43402189",
+   "sector": "Alimentación",
+   "address": "Carretera T-710, km 3",
+   "postcode": "43730",
+   "city": "Falset",
+   "status": "active",
+   "owner": "lf",
+   "lastContact": 0,
+   "billed": 37025,
+   "contacts": [
+    {
+     "name": "Jordi Puig",
+     "role": "Enólogo y gerente"
+    },
+    {
+     "name": "Núria Vidal",
+     "role": "Tienda y enoturismo"
+    }
+   ]
+  },
+  {
+   "id": "iturbe",
+   "name": "Construcciones Iturbe e Hijos S.L.",
+   "cif": "B01104520",
+   "sector": "Industria",
+   "address": "Calle Portal de Gamarra, 46",
+   "postcode": "01013",
+   "city": "Vitoria-Gasteiz",
+   "status": "active",
+   "owner": "jm",
+   "lastContact": -2,
+   "billed": 71940,
+   "contacts": [
+    {
+     "name": "Ane Iturbe",
+     "role": "Directora técnica"
+    },
+    {
+     "name": "Josu Iturbe",
+     "role": "Jefe de obra"
+    }
+   ]
+  },
+  {
+   "id": "llull",
+   "name": "Assessoria Llull & Associats S.L.",
+   "cif": "B07298144",
+   "sector": "Servicios",
+   "address": "Carrer de Sant Miquel, 12",
+   "postcode": "07002",
+   "city": "Palma",
+   "status": "risk",
+   "owner": "ar",
+   "lastContact": -34,
+   "billed": 9075,
+   "contacts": [
+    {
+     "name": "Bernat Llull",
+     "role": "Socio director"
+    }
+   ]
+  },
+  {
+   "id": "navarro",
+   "name": "Distribuciones Navarro Segura S.L.",
+   "cif": "B30765408",
+   "sector": "Alimentación",
+   "address": "Polígono Oeste, calle 7, nave 22",
+   "postcode": "30169",
+   "city": "San Ginés",
+   "status": "active",
+   "owner": "jm",
+   "lastContact": -6,
+   "billed": 42350,
+   "contacts": [
+    {
+     "name": "Pedro Navarro",
+     "role": "Gerente"
+    },
+    {
+     "name": "Carmen Segura",
+     "role": "Compras"
+    }
+   ]
+  },
+  {
+   "id": "penyagolosa",
+   "name": "Hostal Penyagolosa",
+   "cif": "20471836L",
+   "sector": "Hostelería",
+   "address": "Plaza Mayor, 4",
+   "postcode": "12160",
+   "city": "Vistabella del Maestrat",
+   "status": "new",
+   "owner": "ar",
+   "lastContact": -9,
+   "billed": 2178,
+   "contacts": [
+    {
+     "name": "Rosa Bellés",
+     "role": "Propietaria"
+    }
+   ]
+  },
+  {
+   "id": "albaida",
+   "name": "Fisioterapia Albaida S.L.",
+   "cif": "B98710239",
+   "sector": "Salud",
+   "address": "Avinguda de Daniel Gil, 21",
+   "postcode": "46870",
+   "city": "Ontinyent",
+   "status": "new",
+   "owner": "ar",
+   "lastContact": -4,
+   "billed": 1452,
+   "contacts": [
+    {
+     "name": "Carles Ferri",
+     "role": "Fisioterapeuta"
+    }
+   ]
+  },
+  {
+   "id": "garabato",
+   "name": "Estudio Garabato S.Coop.",
+   "cif": "F91087452",
+   "sector": "Servicios",
+   "address": "Calle Feria, 88",
+   "postcode": "41003",
+   "city": "Sevilla",
+   "status": "risk",
+   "owner": "lf",
+   "lastContact": -52,
+   "billed": 14520,
+   "contacts": [
+    {
+     "name": "Lola Garrido",
+     "role": "Diseño"
+    },
+    {
+     "name": "Manu Ortega",
+     "role": "Cuentas"
+    }
+   ]
+  },
+  {
+   "id": "quintana",
+   "name": "Ferretería Hermanos Quintana S.L.",
+   "cif": "B35029172",
+   "sector": "Comercio",
+   "address": "Calle Mesa y López, 63",
+   "postcode": "35010",
+   "city": "Las Palmas de Gran Canaria",
+   "status": "active",
+   "owner": "jm",
+   "lastContact": -3,
+   "billed": 6340,
+   "contacts": [
+    {
+     "name": "Airam Quintana",
+     "role": "Encargado"
+    }
+   ]
+  },
+  {
+   "id": "mercedes",
+   "name": "Centro de Formación Profesional y Ocupacional Nuestra Señora de las Mercedes S.L.",
+   "cif": "B14280739",
+   "sector": "Educación",
+   "address": "Avenida del Brillante, 105",
+   "postcode": "14012",
+   "city": "Córdoba",
+   "status": "active",
+   "owner": "ar",
+   "lastContact": -12,
+   "billed": 18900,
+   "contacts": [
+    {
+     "name": "Rafael Montilla",
+     "role": "Director"
+    },
+    {
+     "name": "Inma Castro",
+     "role": "Secretaría"
+    }
+   ]
+  },
+  {
+   "id": "lacorte",
+   "name": "Panadería La Corte",
+   "cif": "71294508M",
+   "sector": "Alimentación",
+   "address": "Calle Platerías, 9",
+   "postcode": "47003",
+   "city": "Valladolid",
+   "status": "active",
+   "owner": "lf",
+   "lastContact": -27,
+   "billed": 1180,
+   "contacts": []
+  },
+  {
+   "id": "lur",
+   "name": "Osteopatía Lur S.L.",
+   "cif": "B20753810",
+   "sector": "Salud",
+   "address": "Calle Easo, 40, bajo",
+   "postcode": "20006",
+   "city": "Donostia / San Sebastián",
+   "status": "active",
+   "owner": "ar",
+   "lastContact": -15,
+   "billed": 4235,
+   "contacts": [
+    {
+     "name": "Garazi Etxeberria",
+     "role": "Osteópata"
+    }
+   ]
+  },
+  {
+   "id": "ebro",
+   "name": "Transportes Ebro Logística S.L.",
+   "cif": "B26103945",
+   "sector": "Servicios",
+   "address": "Polígono Cantabria II, calle Las Cañas, 15",
+   "postcode": "26009",
+   "city": "Logroño",
+   "status": "active",
+   "owner": "jm",
+   "lastContact": -8,
+   "billed": 27660,
+   "contacts": [
+    {
+     "name": "Alberto Sáenz",
+     "role": "Jefe de tráfico"
+    },
+    {
+     "name": "Raquel Ibáñez",
+     "role": "Administración"
+    }
+   ]
+  },
+  {
+   "id": "miramar",
+   "name": "Apartamentos Miramar Benidorm S.L.",
+   "cif": "B03917564",
+   "sector": "Hostelería",
+   "address": "Avenida del Mediterráneo, 37",
+   "postcode": "03503",
+   "city": "Benidorm",
+   "status": "risk",
+   "owner": "ar",
+   "lastContact": -41,
+   "billed": 8470,
+   "contacts": [
+    {
+     "name": "Javier Pastor",
+     "role": "Gerente"
+    }
+   ]
+  },
+  {
+   "id": "galaica",
+   "name": "Conservas Galaica S.A.",
+   "cif": "A36204832",
+   "sector": "Alimentación",
+   "address": "Avenida de Beiramar, 59",
+   "postcode": "36202",
+   "city": "Vigo",
+   "status": "active",
+   "owner": "lf",
+   "lastContact": -5,
+   "billed": 33275,
+   "contacts": [
+    {
+     "name": "Uxía Lorenzo",
+     "role": "Calidad"
+    },
+    {
+     "name": "Brais Otero",
+     "role": "Producción"
+    }
+   ]
+  },
+  {
+   "id": "tejeda",
+   "name": "Academia de Idiomas Tejeda",
+   "cif": "44718260G",
+   "sector": "Educación",
+   "address": "Calle Recogidas, 22, 2.º",
+   "postcode": "18005",
+   "city": "Granada",
+   "status": "new",
+   "owner": "ar",
+   "lastContact": -7,
+   "billed": 0,
+   "contacts": [
+    {
+     "name": "Paloma Tejeda",
+     "role": "Directora"
+    }
+   ]
+  },
+  {
+   "id": "alhambra",
+   "name": "Ópticas Alhambra S.L.",
+   "cif": "B18936427",
+   "sector": "Salud",
+   "address": "Calle Reyes Católicos, 15",
+   "postcode": "18009",
+   "city": "Granada",
+   "status": "active",
+   "owner": "jm",
+   "lastContact": -19,
+   "billed": 11495,
+   "contacts": [
+    {
+     "name": "Antonio Molina",
+     "role": "Óptico optometrista"
+    }
+   ]
+  },
+  {
+   "id": "moncayo",
+   "name": "Forja Artesanal Moncayo",
+   "cif": "17240965G",
+   "sector": "Industria",
+   "address": "Camino de la Fuente, s/n",
+   "postcode": "50500",
+   "city": "Tarazona",
+   "status": "active",
+   "owner": "jm",
+   "lastContact": -23,
+   "billed": 3630,
+   "contacts": [
+    {
+     "name": "Félix Lacasa",
+     "role": "Herrero y propietario"
+    }
+   ]
+  },
+  {
+   "id": "verdeal",
+   "name": "Viveros Verdeal S.L.",
+   "cif": "B14071286",
+   "sector": "Comercio",
+   "address": "Carretera de Palma del Río, km 4",
+   "postcode": "14005",
+   "city": "Córdoba",
+   "status": "active",
+   "owner": "lf",
+   "lastContact": -11,
+   "billed": 7865,
+   "contacts": [
+    {
+     "name": "Rocío Delgado",
+     "role": "Gerente"
+    }
+   ]
+  },
+  {
+   "id": "nunez",
+   "name": "Gestoría Núñez Ramos S.L.",
+   "cif": "B86031291",
+   "sector": "Servicios",
+   "address": "Calle de Alcalá, 148, 3.º izda.",
+   "postcode": "28009",
+   "city": "Madrid",
+   "status": "active",
+   "owner": "lf",
+   "lastContact": -16,
+   "billed": 5808,
+   "contacts": [
+    {
+     "name": "Mercedes Núñez",
+     "role": "Gestora"
+    },
+    {
+     "name": "Óscar Ramos",
+     "role": "Laboral"
+    }
+   ]
+  },
+  {
+   "id": "cierzo",
+   "name": "Cervecera Cierzo S.L.",
+   "cif": "B50847169",
+   "sector": "Alimentación",
+   "address": "Calle de Miguel Servet, 207, nave 3",
+   "postcode": "50013",
+   "city": "Zaragoza",
+   "status": "new",
+   "owner": "jm",
+   "lastContact": -2,
+   "billed": 0,
+   "contacts": [
+    {
+     "name": "Diego Lahoz",
+     "role": "Maestro cervecero"
+    }
+   ]
+  },
+  {
+   "id": "aranda",
+   "name": "Muebles Aranda S.L.",
+   "cif": "B02308674",
+   "sector": "Comercio",
+   "address": "Polígono Campollano, avenida 4.ª, 12",
+   "postcode": "02007",
+   "city": "Albacete",
+   "status": "risk",
+   "owner": "ar",
+   "lastContact": -44,
+   "billed": 12705,
+   "contacts": [
+    {
+     "name": "Julián Aranda",
+     "role": "Gerente"
+    }
+   ]
+  }
+ ],
+ "invoices": [
+  {
+   "number": "F-0371",
+   "client": "miramar",
+   "issued": -64,
+   "paid": null,
+   "lines": [
+    [
+     "Web de reservas — segundo plazo",
+     1,
+     2400,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0388",
+   "client": "aranda",
+   "issued": -41,
+   "paid": -33,
+   "lines": [
+    [
+     "Catálogo online de muebles",
+     1,
+     3300,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0398",
+   "client": "iturbe",
+   "issued": -27,
+   "paid": -20,
+   "lines": [
+    [
+     "Mantenimiento del software de obra — septiembre",
+     1,
+     6800,
+     21
+    ],
+    [
+     "Formación a jefes de obra (horas)",
+     4,
+     95,
+     21
+    ],
+    [
+     "Licencias móviles adicionales",
+     6,
+     68,
+     21
+    ],
+    [
+     "Manual impreso del curso",
+     4,
+     18,
+     4
+    ],
+    [
+     "Comida de la jornada de formación",
+     1,
+     220,
+     10
+    ]
+   ]
+  },
+  {
+   "number": "F-0401",
+   "client": "ribera",
+   "issued": -24,
+   "paid": -15,
+   "lines": [
+    [
+     "Recordatorio de citas por SMS",
+     1,
+     1900,
+     21
+    ],
+    [
+     "Configuración e importación de pacientes",
+     1,
+     900,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0402",
+   "client": "galaica",
+   "issued": -22,
+   "paid": -22,
+   "lines": [
+    [
+     "Trazabilidad de lotes — desarrollo",
+     1,
+     3100,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0403",
+   "client": "turia",
+   "issued": -21,
+   "paid": -12,
+   "lines": [
+    [
+     "Licencia anual PMS — Hotel Turia Centro",
+     1,
+     6200,
+     21
+    ],
+    [
+     "Licencia anual PMS — Hotel Turia Playa",
+     1,
+     6200,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0404",
+   "client": "nunez",
+   "issued": -19,
+   "paid": -8,
+   "lines": [
+    [
+     "Cuota de mantenimiento anual",
+     1,
+     960,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0405",
+   "client": "llull",
+   "issued": -18,
+   "paid": -10,
+   "lines": [
+    [
+     "Soporte técnico — bolsa de 10 horas",
+     1,
+     1500,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0406",
+   "client": "arrieta",
+   "issued": -16,
+   "paid": -6,
+   "lines": [
+    [
+     "Integración con lector de códigos de barras",
+     1,
+     3450,
+     21
+    ],
+    [
+     "Desarrollo a medida (horas)",
+     22,
+     65,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0407",
+   "client": "quintana",
+   "issued": -14,
+   "paid": -3,
+   "lines": [
+    [
+     "Configuración del TPV en remoto",
+     1,
+     690,
+     0
+    ],
+    [
+     "Formación en línea al personal (horas)",
+     4,
+     60,
+     0
+    ]
+   ]
+  },
+  {
+   "number": "F-0408",
+   "client": "navarro",
+   "issued": -13,
+   "paid": null,
+   "lines": [
+    [
+     "Conector con almacén (fase 1)",
+     1,
+     8000,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0409",
+   "client": "montsant",
+   "issued": -11,
+   "paid": 0,
+   "lines": [
+    [
+     "Tienda online — diseño y puesta en marcha (50 %)",
+     1,
+     4000,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "R-0003",
+   "client": "ribera",
+   "issued": -10,
+   "paid": -10,
+   "lines": [
+    [
+     "Abono: importación de pacientes no realizada",
+     1,
+     -300,
+     21
+    ]
+   ],
+   "rectifies": "F-0401",
+   "reason": "La importación de pacientes no se llegó a hacer; se abona su parte."
+  },
+  {
+   "number": "F-0410",
+   "client": "penyagolosa",
+   "issued": -9,
+   "paid": null,
+   "lines": [
+    [
+     "Motor de reservas web — alta",
+     1,
+     1200,
+     21
+    ],
+    [
+     "Cuota mensual de octubre",
+     1,
+     600,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0411",
+   "client": "turia",
+   "issued": -6,
+   "paid": null,
+   "lines": [
+    [
+     "Renovación PMS — anticipo",
+     1,
+     7400,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0412",
+   "client": "albaida",
+   "issued": -4,
+   "paid": null,
+   "lines": [
+    [
+     "Agenda online — alta y formación",
+     1,
+     1200,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0413",
+   "client": "iturbe",
+   "issued": -2,
+   "paid": null,
+   "lines": [
+    [
+     "Mantenimiento del software de obra — octubre",
+     1,
+     6800,
+     21
+    ],
+    [
+     "Visita técnica a obra",
+     2,
+     850,
+     21
+    ]
+   ]
+  },
+  {
+   "number": "F-0414",
+   "client": "arrieta",
+   "issued": -1,
+   "paid": null,
+   "lines": [
+    [
+     "Ampliación de licencias (anticipo)",
+     1,
+     5429.67,
+     21
+    ]
+   ]
+  }
+ ],
+ "deals": [
+  {
+   "id": "d1",
+   "client": "iturbe",
+   "title": "Mantenimiento anual de obra",
+   "amount": 32400,
+   "stage": "closing",
+   "close": 9,
+   "owner": "jm"
+  },
+  {
+   "id": "d2",
+   "client": "turia",
+   "title": "Renovación del PMS en 3 hoteles",
+   "amount": 18600,
+   "stage": "negotiation",
+   "close": 24,
+   "owner": "lf"
+  },
+  {
+   "id": "d3",
+   "client": "navarro",
+   "title": "Integración con almacén (fase 2)",
+   "amount": 14250,
+   "stage": "proposal",
+   "close": 38,
+   "owner": "jm"
+  },
+  {
+   "id": "d4",
+   "client": "montsant",
+   "title": "Tienda online — segunda fase",
+   "amount": 11300,
+   "stage": "negotiation",
+   "close": 30,
+   "owner": "lf"
+  },
+  {
+   "id": "d5",
+   "client": "ribera",
+   "title": "Apertura de la segunda clínica",
+   "amount": 7900,
+   "stage": "proposal",
+   "close": 45,
+   "owner": "ar"
+  },
+  {
+   "id": "d6",
+   "client": "arrieta",
+   "title": "Ampliación a 12 licencias",
+   "amount": 5600,
+   "stage": "negotiation",
+   "close": 17,
+   "owner": "jm"
+  },
+  {
+   "id": "d7",
+   "client": "penyagolosa",
+   "title": "Reservas desde la web",
+   "amount": 3900,
+   "stage": "proposal",
+   "close": 52,
+   "owner": "ar"
+  },
+  {
+   "id": "d8",
+   "client": "albaida",
+   "title": "Agenda online",
+   "amount": 2400,
+   "stage": "closing",
+   "close": 6,
+   "owner": "ar"
+  },
+  {
+   "id": "d9",
+   "client": "cierzo",
+   "title": "Control de producción y lotes",
+   "amount": 9800,
+   "stage": "proposal",
+   "close": 60,
+   "owner": "jm"
+  },
+  {
+   "id": "d10",
+   "client": "mercedes",
+   "title": "Campus virtual — 400 alumnos",
+   "amount": 16750,
+   "stage": "negotiation",
+   "close": 21,
+   "owner": "ar"
+  },
+  {
+   "id": "d11",
+   "client": "tejeda",
+   "title": "Matrícula online",
+   "amount": 2900,
+   "stage": "proposal",
+   "close": 33,
+   "owner": "ar"
+  }
+ ],
+ "closedDeals": [
+  {
+   "client": "ribera",
+   "title": "Software de citas",
+   "amount": 6200,
+   "won": true,
+   "date": -3,
+   "owner": "ar"
+  },
+  {
+   "client": "garabato",
+   "title": "Rediseño de la web",
+   "amount": 8900,
+   "won": false,
+   "date": -6,
+   "owner": "lf"
+  },
+  {
+   "client": "arrieta",
+   "title": "Formación del equipo",
+   "amount": 2150,
+   "won": true,
+   "date": -11,
+   "owner": "jm"
+  },
+  {
+   "client": "montsant",
+   "title": "Etiquetado de producto",
+   "amount": 4300,
+   "won": true,
+   "date": -19,
+   "owner": "lf"
+  },
+  {
+   "client": "llull",
+   "title": "Migración de datos",
+   "amount": 3600,
+   "won": false,
+   "date": -25,
+   "owner": "ar"
+  },
+  {
+   "client": "ebro",
+   "title": "Seguimiento de flota",
+   "amount": 12400,
+   "won": true,
+   "date": -30,
+   "owner": "jm"
+  }
+ ],
+ "meetings": [
+  {
+   "title": "Revisión de propuesta",
+   "client": "turia",
+   "icon": "video",
+   "date": 0,
+   "time": "10:30",
+   "length": 45,
+   "owner": "lf"
+  },
+  {
+   "title": "Seguimiento de pedido",
+   "client": "montsant",
+   "icon": "phone",
+   "date": 0,
+   "time": "16:00",
+   "length": 20,
+   "owner": "lf"
+  },
+  {
+   "title": "Visita a obra",
+   "client": "iturbe",
+   "icon": "building",
+   "date": 1,
+   "time": "09:15",
+   "length": 90,
+   "owner": "jm"
+  },
+  {
+   "title": "Presentación de la agenda online",
+   "client": "albaida",
+   "icon": "video",
+   "date": 2,
+   "time": "12:00",
+   "length": 30,
+   "owner": "ar"
+  },
+  {
+   "title": "Llamada de seguimiento",
+   "client": "cierzo",
+   "icon": "phone",
+   "date": 3,
+   "time": "11:30",
+   "length": 20,
+   "owner": "jm"
+  },
+  {
+   "title": "Comida con Marta Soler",
+   "client": "turia",
+   "icon": "building",
+   "date": 4,
+   "time": "14:00",
+   "length": 90,
+   "owner": "lf"
+  },
+  {
+   "title": "Revisión trimestral",
+   "client": "arrieta",
+   "icon": "video",
+   "date": 6,
+   "time": "10:00",
+   "length": 60,
+   "owner": "jm"
+  }
+ ],
+ "events": [
+  {
+   "type": "paid",
+   "client": "montsant",
+   "invoice": "F-0409",
+   "date": 0,
+   "time": "09:41",
+   "author": "lf"
+  },
+  {
+   "type": "call",
+   "client": "arrieta",
+   "date": 0,
+   "time": "08:55",
+   "author": "jm",
+   "minutes": 12
+  },
+  {
+   "type": "invoice",
+   "client": "arrieta",
+   "invoice": "F-0414",
+   "date": -1,
+   "time": "18:10",
+   "author": "jm"
+  },
+  {
+   "type": "proposal",
+   "client": "turia",
+   "amount": 18600,
+   "date": -1,
+   "time": "17:20",
+   "author": "lf"
+  },
+  {
+   "type": "meeting",
+   "client": "iturbe",
+   "date": -2,
+   "time": "11:00",
+   "author": "jm"
+  },
+  {
+   "type": "invoice",
+   "client": "iturbe",
+   "invoice": "F-0413",
+   "date": -2,
+   "time": "10:40",
+   "author": "jm"
+  },
+  {
+   "type": "won",
+   "client": "ribera",
+   "amount": 6200,
+   "date": -3,
+   "time": "12:05",
+   "author": "ar"
+  },
+  {
+   "type": "paid",
+   "client": "quintana",
+   "invoice": "F-0407",
+   "date": -3,
+   "time": "09:02",
+   "author": "lf"
+  },
+  {
+   "type": "call",
+   "client": "miramar",
+   "date": -5,
+   "time": "10:15",
+   "author": "ar",
+   "minutes": 3
+  },
+  {
+   "type": "paid",
+   "client": "arrieta",
+   "invoice": "F-0406",
+   "date": -6,
+   "time": "13:30",
+   "author": "lf"
+  },
+  {
+   "type": "invoice",
+   "client": "ribera",
+   "invoice": "R-0003",
+   "date": -10,
+   "time": "16:45",
+   "author": "ar"
+  },
+  {
+   "type": "call",
+   "client": "arrieta",
+   "date": -9,
+   "time": "12:20",
+   "author": "lf",
+   "minutes": 25
+  }
+ ],
+ "notes": [
+  {
+   "client": "arrieta",
+   "author": "jm",
+   "date": -2,
+   "time": "17:05",
+   "text": "Quieren pasar a 12 licencias en enero. Pedir presupuesto a Ainhoa antes del viernes."
+  },
+  {
+   "client": "arrieta",
+   "author": "lf",
+   "date": -9,
+   "time": "12:48",
+   "text": "Pagan siempre a 30 días, sin problema. Las facturas a Maite (administración), no a Iñaki."
+  },
+  {
+   "client": "turia",
+   "author": "lf",
+   "date": -1,
+   "time": "17:31",
+   "text": "Marta pide que la renovación incluya el hotel de la Malvarrosa. Quieren factura separada por hotel."
+  },
+  {
+   "client": "miramar",
+   "author": "ar",
+   "date": -5,
+   "time": "10:19",
+   "text": "Llamada de 3 min: Javier dice que paga la F-0371 «la semana que viene». Van tres semanas así."
+  },
+  {
+   "client": "miramar",
+   "author": "ar",
+   "date": -40,
+   "time": "09:12",
+   "text": "No contestan a los correos desde septiembre. Mejor por teléfono y por la mañana."
+  },
+  {
+   "client": "iturbe",
+   "author": "jm",
+   "date": -5,
+   "time": "18:40",
+   "text": "Visita a obra confirmada. Llevar la tablet de demo y el contrato de mantenimiento impreso."
+  },
+  {
+   "client": "mercedes",
+   "author": "ar",
+   "date": -12,
+   "time": "13:55",
+   "text": "Firma el director pero decide Inma. Presupuesto por alumno, no cerrado."
+  }
+ ],
+ "tasks": [
+  {
+   "text": "Llamar a Ane Iturbe para cerrar el mantenimiento",
+   "client": "iturbe",
+   "owner": "jm",
+   "due": 0,
+   "done": false
+  },
+  {
+   "text": "Pedir a Maite los datos de facturación nuevos",
+   "client": "arrieta",
+   "owner": "lf",
+   "due": 0,
+   "done": false
+  },
+  {
+   "text": "Reclamar el pago de la F-0371",
+   "client": "miramar",
+   "owner": "ar",
+   "due": -2,
+   "done": false
+  },
+  {
+   "text": "Llamar a Bernat: lleva un mes sin contestar",
+   "client": "llull",
+   "owner": "ar",
+   "due": -5,
+   "done": false
+  },
+  {
+   "text": "Enviar presupuesto revisado de la fase 2",
+   "client": "navarro",
+   "owner": "jm",
+   "due": 1,
+   "done": false
+  },
+  {
+   "text": "Preparar la demo de la agenda online",
+   "client": "albaida",
+   "owner": "ar",
+   "due": 2,
+   "done": false
+  },
+  {
+   "text": "Factura separada por hotel (Malvarrosa)",
+   "client": "turia",
+   "owner": "lf",
+   "due": 3,
+   "done": false
+  },
+  {
+   "text": "Cerrar fecha de formación con Rafael e Inma",
+   "client": "mercedes",
+   "owner": "ar",
+   "due": 6,
+   "done": false
+  },
+  {
+   "text": "Revisar el margen del presupuesto de Cierzo",
+   "client": "cierzo",
+   "owner": "jm",
+   "due": 9,
+   "done": false
+  },
+  {
+   "text": "Actualizar tarifas para 2027",
+   "owner": "lf",
+   "due": 14,
+   "done": false
+  },
+  {
+   "text": "Revisar contratos que renuevan en enero",
+   "owner": "lf",
+   "due": -1,
+   "done": true,
+   "doneAt": -1
+  },
+  {
+   "text": "Confirmar visita a obra",
+   "client": "iturbe",
+   "owner": "jm",
+   "due": -2,
+   "done": true,
+   "doneAt": -2
+  },
+  {
+   "text": "Encuesta de satisfacción a los clientes nuevos",
+   "owner": "lf",
+   "due": -3,
+   "done": true,
+   "doneAt": -4
+  }
+ ],
+ "quarter": {
+  "target": 120000,
+  "won": 86450
+ },
+ "charts": {
+  "previousMonthsBilled": [
+   58200,
+   61400,
+   55900,
+   63100,
+   66800,
+   64200,
+   70500,
+   72900,
+   68400,
+   76100,
+   79310
+  ],
+  "previousMonthsCollected": [
+   55100,
+   60200,
+   54300,
+   59800,
+   66100,
+   61900,
+   68700,
+   71200,
+   67900,
+   72400,
+   77600
+  ],
+  "previousYearBilled": 734900,
+  "weeks": {
+   "billed": [
+    17800,
+    21400,
+    16900,
+    24600,
+    19300,
+    22800,
+    18700
+   ],
+   "collected": [
+    15200,
+    19800,
+    18100,
+    20400,
+    17600,
+    21900,
+    9800
+   ]
+  }
+ }
+}

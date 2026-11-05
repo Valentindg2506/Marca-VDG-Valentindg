@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Panel AR · UD2</title>
+  <meta name="description" content="Ejercicio 4 de la UD2: realidad aumentada. Un panel 3D con los indicadores del CRM colocado sobre la mesa con WebXR (hit-test) o sobre la imagen de la cámara.">
+  <link rel="icon" href="../../CRM/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../CRM/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/ejercicios.css">
+  <style>
+    body { overflow: hidden; background: radial-gradient(circle at 50% 30%, #2e2b34, #121116 70%); }
+    #camera { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    #camera[hidden] { display: none; }
+    a-scene { position: fixed !important; inset: 0; z-index: 1; }
+    /* Capa que WebXR muestra encima de la cámara (dom-overlay): ocupa la pantalla y solo el panel recibe toques. */
+    .overlay-root { position: fixed; inset: 0; z-index: 10; pointer-events: none; }
+    .xr-overlay {
+      pointer-events: auto;
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: max(16px, env(safe-area-inset-bottom));
+      z-index: 10;
+      display: grid;
+      gap: var(--space-5);
+      max-width: 520px;
+      margin: 0 auto;
+      padding: var(--space-7);
+      border-radius: var(--radius-card);
+      background: rgba(27,26,32,.84);
+      color: #f4f2f6;
+      backdrop-filter: blur(12px);
+      font-size: var(--text-small);
+    }
+    .xr-overlay h1 { font-size: var(--text-h3); }
+    .xr-overlay p { color: #c9c4cf; }
+    .xr-overlay a { color: #f65d49; font-weight: 600; }
+    .xr-overlay .btn { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: #fff; }
+    .xr-overlay .btn.accent { background: var(--color-accent); border-color: transparent; }
+    .status { font-family: var(--font-mono); font-size: var(--text-caption); color: #61d2a6; }
+    .a-enter-ar-button { background-color: #ed533e !important; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe-v1.5.0.min.js"></script>
+  <script src="xr-components.js"></script>
+</head>
+<body>
+  <video id="camera" playsinline muted hidden></video>
+
+  <a-scene renderer="antialias: true; colorManagement: true; alpha: true" vr-mode-ui="enabled: false"
+    webxr="optionalFeatures: hit-test, local-floor, dom-overlay; overlayElement: #overlay"
+    ar-hit-test="target: #totem; type: footprint; footprintDepth: 0.15"
+    cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable"
+    loading-screen="dotsColor: #f65d49; backgroundColor: #121116">
+    <a-entity light="type: ambient; intensity: 0.7"></a-entity>
+    <a-entity light="type: directional; intensity: 0.9" position="1 3 2"></a-entity>
+    <a-entity camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: false" position="0 1.6 0"></a-entity>
+    <!-- Tótem con los indicadores: en AR se coloca en la superficie que se toque (hit-test). -->
+    <a-entity id="totem" position="0 1.55 -2" drag-rotate><a-entity id="totem-body" sway></a-entity></a-entity>
+  </a-scene>
+
+  <div id="overlay" class="overlay-root">
+  <div class="xr-overlay">
+    <h1>Indicadores del CRM en realidad aumentada</h1>
+    <p id="help">Comprobando qué admite este dispositivo…</p>
+    <div class="btn-row">
+      <button class="btn accent" id="enter-ar" hidden>Entrar en AR (WebXR)</button>
+      <button class="btn" id="use-camera">Ver sobre la cámara</button>
+      <a class="btn" href="index.html">← Volver</a>
+    </div>
+    <span class="status" id="status"></span>
+  </div>
+  </div>
+  <script type="module" src="ar.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Interfaces naturales · UD2</title>
+  <meta name="description" content="Ejercicios de la UD2 de Desarrollo de Interfaces: gestos, detector facial, comandos por gestos y realidad aumentada y virtual sobre el CRM valentindg.">
+  <link rel="icon" href="../CRM/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="shared/ejercicios.css">
+  <style>
+    .exercises { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); }
+    .exercise { display: grid; gap: var(--space-5); align-content: start; text-decoration: none; transition: transform .2s var(--ease-ui), box-shadow .2s; }
+    .exercise:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .exercise .num { font-family: var(--font-mono); color: var(--color-accent); font-size: var(--text-caption); }
+    .exercise .emoji { font-size: 40px; }
+    .exercise p { color: var(--color-text-muted); }
+    .exercise .tags { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+    .crm-link { display: flex; align-items: center; justify-content: space-between; gap: var(--space-7); flex-wrap: wrap; margin-top: var(--space-9); }
+  </style>
+</head>
+<body>
+  <main class="ex-main">
+    <div class="ex-head">
+      <span class="eyebrow">UD2 · Generación de interfaces naturales de usuario</span>
+      <h1>Ejercicios de interfaces naturales</h1>
+      <p>Cada ejercicio es una página independiente que reutiliza los datos, la marca y los tokens de diseño del CRM. La voz y el dictado están integrados dentro del propio CRM.</p>
+    </div>
+
+    <div class="exercises">
+      <a class="card exercise" href="01-gestos/index.html">
+        <span class="num">01</span><span class="emoji" aria-hidden="true">👆</span>
+        <h2>Gestos</h2>
+        <p>Bandeja de seguimiento con deslizar, doble toque, pulsación larga, pellizcar, girar y agitar el móvil.</p>
+        <div class="tags"><span class="tag">Pointer Events</span><span class="tag">DeviceMotion</span></div>
+      </a>
+      <a class="card exercise" href="02-detector-facial/index.html">
+        <span class="num">02</span><span class="emoji" aria-hidden="true">🙂</span>
+        <h2>Detector facial</h2>
+        <p>Privacidad automática si no estás o alguien mira, cambio de cliente girando la cabeza y expresiones como órdenes.</p>
+        <div class="tags"><span class="tag">MediaPipe Face Landmarker</span><span class="tag">Cámara</span></div>
+      </a>
+      <a class="card exercise" href="03-comandos-gestos/index.html">
+        <span class="num">03</span><span class="emoji" aria-hidden="true">✋</span>
+        <h2>Comandos por gestos</h2>
+        <p>Gestos de la mano, cursor aéreo con pinza, barrido en el aire y posturas del cuerpo para mover el embudo de ventas.</p>
+        <div class="tags"><span class="tag">Gesture Recognizer</span><span class="tag">Pose Landmarker</span></div>
+      </a>
+      <a class="card exercise" href="04-realidad-aumentada-vr/index.html">
+        <span class="num">04</span><span class="emoji" aria-hidden="true">🥽</span>
+        <h2>AR / VR</h2>
+        <p>Sala de ventas en realidad virtual y tótem de indicadores en realidad aumentada sobre la mesa.</p>
+        <div class="tags"><span class="tag">WebXR</span><span class="tag">A-Frame</span></div>
+      </a>
+    </div>
+
+    <section class="card crm-link">
+      <div>
+        <h2>Voz y dictado, dentro del CRM</h2>
+        <p class="muted">Micrófono en la barra superior (tecla <span class="mono">V</span>) y botón de dictado en notas, tareas, búsqueda y asistente.</p>
+      </div>
+      <a class="btn dark" href="../CRM/index.html">Abrir el CRM</a>
+    </section>
+  </main>
+  <script type="module">
+    import { applyTheme } from './shared/common.js';
+    import { logo } from '../CRM/js/components/logo.js';
+    applyTheme();
+    const top = document.createElement('header');
+    top.className = 'ex-top';
+    top.innerHTML = `<a class="ex-brand" href="../index.html">${logo().replace('<svg', '<svg style="height:22px;width:auto"')}<span class="muted">· Entrega UD2</span></a>`;
+    document.body.prepend(top);
+  </script>
+</body>
+</html>

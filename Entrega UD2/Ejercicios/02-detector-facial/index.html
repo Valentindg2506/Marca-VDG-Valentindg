@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Detector facial · UD2</title>
+  <meta name="description" content="Ejercicio 2 de la UD2: detector facial con MediaPipe Face Landmarker. Privacidad automática, navegación con la cabeza y expresiones como comandos.">
+  <link rel="icon" href="../../CRM/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../shared/ejercicios.css">
+  <style>
+    .crm-screen { position: relative; display: grid; gap: var(--space-6); }
+    .crm-screen .amount { font-family: var(--font-mono); font-size: var(--text-figure); transition: filter .3s; }
+    .crm-screen.is-private .amount, .crm-screen.is-private .sensitive { filter: blur(9px); }
+    .privacy-banner { display: none; align-items: center; gap: var(--space-4); padding: var(--space-5) var(--space-6); border-radius: var(--radius-control); background: var(--color-accent-soft); color: var(--color-accent); font-weight: 600; }
+    .crm-screen.is-private .privacy-banner { display: flex; }
+    .client-nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); }
+    .client-nav h3 { font-size: var(--text-h2); }
+    .stars { color: var(--color-accent); letter-spacing: 2px; }
+    .detail { display: none; padding: var(--space-6); border-radius: var(--radius-control); background: var(--color-surface-alt); }
+    .crm-screen.show-detail .detail { display: block; }
+    .dots { display: flex; gap: 6px; justify-content: center; }
+    .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--color-border-strong); }
+    .dots i.on { background: var(--color-accent); }
+    .head-gauge { position: relative; height: 8px; border-radius: 4px; background: var(--color-border-strong); margin-top: var(--space-4); }
+    .head-gauge i { position: absolute; top: -4px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: var(--color-accent); left: 50%; transition: left .1s linear; }
+    .head-gauge::before, .head-gauge::after { content: ""; position: absolute; top: -3px; width: 2px; height: 14px; background: var(--color-text-subtle); }
+    .head-gauge::before { left: 30%; }
+    .head-gauge::after { left: 70%; }
+  </style>
+</head>
+<body>
+  <main class="ex-main">
+    <div class="ex-head">
+      <span class="eyebrow">Ejercicio 2 · Detector facial</span>
+      <h1>El CRM sabe quién está mirando</h1>
+      <p>Con la cámara y un modelo de aprendizaje automático (MediaPipe Face Landmarker, 478 puntos de la cara y 52 expresiones) el CRM protege las cifras cuando no estás o alguien mira por encima de tu hombro, y te deja cambiar de cliente girando la cabeza.</p>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <section class="card">
+          <div class="stage mirror" id="stage">
+            <video id="video" playsinline muted></video>
+            <canvas id="overlay"></canvas>
+            <span class="stage-badge" id="fps" hidden>— fps</span>
+            <div class="stage-msg" id="stage-msg">
+              <strong style="font-size:var(--text-h2)">Detector facial</strong>
+              <span style="opacity:.75">La imagen se procesa en tu navegador: no se envía a ningún servidor.</span>
+              <div><button class="btn accent" id="start">Activar cámara</button></div>
+            </div>
+          </div>
+          <div class="btn-row" style="margin-top:var(--space-6)">
+            <button class="btn" id="stop" disabled>Parar cámara</button>
+            <label class="btn"><input type="checkbox" id="mesh" checked> Malla facial</label>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="crm-screen" id="screen" aria-live="polite">
+            <div class="privacy-banner" id="privacy-banner">🔒 <span id="privacy-reason">Cifras ocultas</span></div>
+            <div class="client-nav">
+              <button class="btn" id="prev" aria-label="Cliente anterior">←</button>
+              <div style="text-align:center">
+                <h3 id="client-name">—</h3>
+                <small class="muted" id="client-meta">—</small>
+              </div>
+              <button class="btn" id="next" aria-label="Cliente siguiente">→</button>
+            </div>
+            <div class="metrics">
+              <div class="metric"><small>Pendiente de cobro</small><span class="amount" id="client-pending">—</span></div>
+              <div class="metric"><small>Facturado</small><span class="amount" id="client-billed">—</span></div>
+              <div class="metric"><small>Satisfacción</small><span class="stars" id="client-stars">☆☆☆</span></div>
+            </div>
+            <div class="detail sensitive" id="detail"></div>
+            <div class="dots" id="dots"></div>
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <section class="card">
+          <h2 style="margin-bottom:var(--space-6)">Lo que ve el modelo</h2>
+          <div class="metrics">
+            <div class="metric"><small>Caras</small><strong id="m-faces">0</strong></div>
+            <div class="metric"><small>Sonrisa</small><strong id="m-smile">0 %</strong><div class="meter green"><i id="b-smile"></i></div></div>
+            <div class="metric"><small>Ojos cerrados</small><strong id="m-blink">0 %</strong><div class="meter"><i id="b-blink"></i></div></div>
+            <div class="metric"><small>Boca abierta</small><strong id="m-jaw">0 %</strong><div class="meter"><i id="b-jaw"></i></div></div>
+          </div>
+          <div class="metric" style="margin-top:var(--space-5)">
+            <small>Giro de cabeza (izquierda · derecha)</small><strong id="m-yaw">0°</strong>
+            <div class="head-gauge"><i id="g-yaw"></i></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 style="margin-bottom:var(--space-5)">Acciones con la cara</h2>
+          <table class="commands">
+            <thead><tr><th></th><th>Si el modelo detecta…</th><th>el CRM…</th></tr></thead>
+            <tbody>
+              <tr data-rule="away"><td>🚶</td><td>Nadie delante 2 s</td><td>oculta las cifras</td></tr>
+              <tr data-rule="crowd"><td>👥</td><td>Dos caras o más</td><td>oculta las cifras y avisa</td></tr>
+              <tr data-rule="turn"><td>↔️</td><td>Girar la cabeza</td><td>cambia de cliente</td></tr>
+              <tr data-rule="smile"><td>😊</td><td>Sonrisa 1 s</td><td>sube la satisfacción</td></tr>
+              <tr data-rule="blink"><td>😉</td><td>Doble parpadeo</td><td>abre o cierra el detalle</td></tr>
+              <tr data-rule="jaw"><td>😮</td><td>Boca abierta 1 s</td><td>lee el cliente en voz alta</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:var(--space-6)">
+            <div class="switch-row"><span>Privacidad automática<small>Ausencia y mirones</small></span><input type="checkbox" class="switch" id="opt-privacy" checked aria-label="Privacidad automática"></div>
+            <div class="switch-row"><span>Comandos con la cabeza<small>Giro, sonrisa, parpadeo y boca</small></span><input type="checkbox" class="switch" id="opt-commands" checked aria-label="Comandos con la cabeza"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 style="margin-bottom:var(--space-5)">Registro</h2>
+          <ol class="log" id="log"></ol>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="facial.js"></script>
+</body>
+</html>

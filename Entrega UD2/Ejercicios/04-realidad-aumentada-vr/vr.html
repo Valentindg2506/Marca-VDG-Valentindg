@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sala de ventas VR · UD2</title>
+  <meta name="description" content="Ejercicio 4 de la UD2: el CRM en realidad virtual con WebXR y A-Frame. Facturación en 3D y embudo de ventas que se maneja con la mirada, el ratón o los mandos.">
+  <link rel="icon" href="../../CRM/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../../CRM/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../shared/ejercicios.css">
+  <style>
+    body { overflow: hidden; }
+    .xr-overlay {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 10;
+      display: grid;
+      gap: var(--space-4);
+      max-width: min(360px, calc(100vw - 32px));
+      padding: var(--space-7);
+      border-radius: var(--radius-card);
+      background: rgba(27,26,32,.82);
+      color: #f4f2f6;
+      backdrop-filter: blur(12px);
+      font-size: var(--text-small);
+    }
+    .xr-overlay h1 { font-size: var(--text-h3); }
+    .xr-overlay ul { margin: 0; padding-left: 18px; color: #c9c4cf; }
+    .xr-overlay a { color: #f65d49; font-weight: 600; }
+    .xr-overlay details summary { cursor: pointer; font-weight: 600; }
+    .a-enter-vr-button { background-color: #ed533e !important; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe-v1.5.0.min.js"></script>
+  <script src="xr-components.js"></script>
+</head>
+<body>
+  <div class="xr-overlay">
+    <h1>Sala de ventas en realidad virtual</h1>
+    <details open>
+      <summary>Cómo se usa</summary>
+      <ul>
+        <li><strong>Gafas VR</strong> (Quest, Pico…): pulsa «VR» abajo a la derecha. Apunta con el mando y aprieta el gatillo, o mira un objeto 1,5 s.</li>
+        <li><strong>Móvil</strong>: mueve el teléfono para mirar alrededor y toca los objetos.</li>
+        <li><strong>Ordenador</strong>: arrastra para mirar, <kbd>W A S D</kbd> para moverte y clic en los objetos.</li>
+        <li>Clic en una <strong>barra</strong>: cifras del mes. Clic en una <strong>oportunidad</strong>: avanza de etapa.</li>
+      </ul>
+    </details>
+    <a href="index.html">← Volver a AR / VR</a>
+  </div>
+
+  <a-scene renderer="antialias: true; colorManagement: true" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable; far: 30"
+    background="color: #121116" fog="type: exponential; color: #121116; density: 0.035" loading-screen="dotsColor: #f65d49; backgroundColor: #121116">
+    <a-entity light="type: ambient; intensity: 0.55; color: #ffffff"></a-entity>
+    <a-entity light="type: directional; intensity: 0.9; color: #fff0ed" position="2 5 3"></a-entity>
+    <a-entity light="type: point; intensity: 0.6; color: #f65d49; distance: 12" position="0 3 -3"></a-entity>
+
+    <!-- Suelo con anillos para dar profundidad -->
+    <a-circle radius="16" rotation="-90 0 0" color="#18171d"></a-circle>
+    <a-ring radius-inner="2.95" radius-outer="3" rotation="-90 0 0" position="0 0.01 0" color="#39363e"></a-ring>
+    <a-ring radius-inner="5.95" radius-outer="6" rotation="-90 0 0" position="0 0.01 0" color="#2c2a32"></a-ring>
+
+    <!-- Usuario: cámara con cursor de mirada (solo en VR) y mandos con láser -->
+    <a-entity id="rig" position="0 0 1.2">
+      <a-entity id="head" camera look-controls wasd-controls="acceleration: 22" position="0 1.6 0">
+        <a-entity id="gaze" position="0 0 -1" visible="false"
+          cursor="fuse: true; fuseTimeout: 1500" raycaster="objects: .clickable; far: 30; enabled: false"
+          geometry="primitive: ring; radiusInner: 0.012; radiusOuter: 0.02" material="color: #f65d49; shader: flat"
+          animation__fusing="property: scale; startEvents: fusing; from: 1 1 1; to: 0.35 0.35 0.35; dur: 1500"
+          animation__leave="property: scale; startEvents: mouseleave; to: 1 1 1; dur: 150"></a-entity>
+      </a-entity>
+      <a-entity laser-controls="hand: right" raycaster="objects: .clickable; far: 30; lineColor: #f65d49"></a-entity>
+      <a-entity laser-controls="hand: left" raycaster="objects: .clickable; far: 30; lineColor: #f65d49"></a-entity>
+    </a-entity>
+
+    <a-entity id="chart" position="0 0 -3.4"></a-entity>
+    <a-entity id="pipeline" position="-3.2 0 -1.2" rotation="0 58 0"></a-entity>
+    <a-entity id="kpis" position="3.3 0 -1.4" rotation="0 -58 0"></a-entity>
+    <a-entity id="info" position="0 0.5 -1.5" rotation="-40 0 0"
+      canvas-panel="width: 1.7; height: 0.55; eyebrow: Detalle; title: Mira o pulsa una barra o una oportunidad; background: #24222988"></a-entity>
+  </a-scene>
+  <script type="module" src="vr.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gestos · UD2</title>
+  <meta name="description" content="Ejercicio 1 de la UD2: gestos táctiles y de puntero (deslizar, tocar, doble toque, pulsación larga, pellizcar, girar y agitar) aplicados a la bandeja de seguimiento del CRM.">
+  <link rel="icon" href="../../CRM/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../shared/ejercicios.css">
+  <style>
+    .tray { position: relative; height: 320px; margin: var(--space-4) 0 44px; }
+    .client-card {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-content: space-between;
+      padding: var(--space-9);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-card);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-menu);
+      cursor: grab;
+      user-select: none;
+      transform-origin: 50% 120%;
+      transition: transform .35s var(--ease-ui), opacity .35s;
+    }
+    .client-card.is-dragging { transition: none; cursor: grabbing; }
+    .client-card.behind { transform: translateY(14px) scale(.95); pointer-events: none; box-shadow: none; }
+    .client-card.behind > * { opacity: .55; }
+    .client-card.behind-2 { transform: translateY(26px) scale(.9); pointer-events: none; box-shadow: none; background: var(--color-surface-alt); }
+    .client-card.behind-2 > * { visibility: hidden; }
+    .client-card h2 { font-size: 24px; margin: var(--space-3) 0; }
+    .client-card .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+    .client-card .facts strong { display: block; font-family: var(--font-mono); font-size: var(--text-h3); }
+    .client-card .facts small { color: var(--color-text-muted); font-size: var(--text-caption); }
+    .client-card .back { display: none; }
+    .client-card.flipped .front { display: none; }
+    .client-card.flipped .back { display: grid; gap: var(--space-5); }
+    .stamp {
+      position: absolute;
+      top: var(--space-9);
+      padding: var(--space-3) var(--space-6);
+      border: 2px solid currentColor;
+      border-radius: var(--radius-control);
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      opacity: 0;
+    }
+    .stamp.right { right: var(--space-9); color: var(--color-success); transform: rotate(8deg); }
+    .stamp.left { left: var(--space-9); color: var(--color-text-muted); transform: rotate(-8deg); }
+    .stamp.up { left: 50%; color: var(--color-accent); transform: translateX(-50%); }
+    .tray-empty { display: grid; place-content: center; height: 100%; text-align: center; gap: var(--space-5); border: 2px dashed var(--color-border-strong); border-radius: var(--radius-card); }
+    .counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+    .context-menu {
+      position: fixed;
+      z-index: 40;
+      display: grid;
+      min-width: 200px;
+      padding: var(--space-3);
+      border-radius: var(--radius-control);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-strong);
+      box-shadow: var(--shadow-menu);
+    }
+    .context-menu button { padding: var(--space-5) var(--space-6); border: 0; border-radius: var(--radius-tag); background: transparent; color: var(--color-text); text-align: left; cursor: pointer; }
+    .context-menu button:hover, .context-menu button:focus-visible { background: var(--color-surface-hover); }
+    .zoom-area { position: relative; height: 300px; overflow: hidden; border-radius: var(--radius-tile); background: var(--color-surface-alt); }
+    .zoom-area svg { position: absolute; inset: 0; margin: auto; width: 88%; height: 80%; transform-origin: center; transition: transform .08s linear; }
+    .zoom-readout { position: absolute; right: var(--space-5); bottom: var(--space-5); }
+    kbd { padding: 1px 6px; border-radius: 4px; border: 1px solid var(--color-border-strong); background: var(--color-surface-alt); font-family: var(--font-mono); font-size: var(--text-caption); }
+  </style>
+</head>
+<body>
+  <main class="ex-main">
+    <div class="ex-head">
+      <span class="eyebrow">Ejercicio 1 · Gestos</span>
+      <h1>Bandeja de seguimiento con gestos</h1>
+      <p>Los clientes que llevan más tiempo sin contacto aparecen como tarjetas. Se gestionan con el dedo (o el ratón) igual que en una app móvil, y el gráfico de facturación se amplía y gira con dos dedos.</p>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <section class="card" aria-labelledby="tray-title">
+          <div class="card-head">
+            <h2 id="tray-title">Clientes por contactar</h2>
+            <span class="tag" id="remaining">—</span>
+          </div>
+          <div class="tray" id="tray" aria-live="polite"></div>
+          <div class="btn-row" aria-label="Alternativa con botones y teclado">
+            <button class="btn" data-do="left">← Posponer</button>
+            <button class="btn" data-do="up">↑ Urgente</button>
+            <button class="btn accent" data-do="right">Contactado →</button>
+            <button class="btn" data-do="flip">Ver contactos</button>
+            <button class="btn" data-do="undo">Deshacer</button>
+          </div>
+          <p class="muted" style="margin-top:var(--space-5);font-size:var(--text-small)">Teclado: <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd>, <kbd>Espacio</kbd> para girar la tarjeta y <kbd>Ctrl Z</kbd> para deshacer.</p>
+        </section>
+
+        <section class="card" aria-labelledby="chart-title">
+          <div class="card-head">
+            <h2 id="chart-title">Facturación de 12 meses</h2>
+            <button class="btn" id="reset-zoom">Restablecer</button>
+          </div>
+          <div class="zoom-area" id="zoom-area" aria-label="Gráfico: pellizca para ampliar y gira con dos dedos">
+            <svg id="chart" viewBox="0 0 480 220" role="img" aria-label="Facturación de los últimos 12 meses"></svg>
+            <span class="tag zoom-readout mono" id="zoom-readout">100 % · 0°</span>
+          </div>
+          <p class="muted" style="margin-top:var(--space-5);font-size:var(--text-small)">Móvil: pellizca y gira con dos dedos, doble toque para volver. Ordenador: <kbd>Ctrl</kbd> + rueda (o pellizco del trackpad) amplía y <kbd>Mayús</kbd> + rueda gira.</p>
+        </section>
+      </div>
+
+      <aside>
+        <section class="card">
+          <h2 style="margin-bottom:var(--space-7)">Resultado</h2>
+          <div class="counters">
+            <div class="metric"><small>Contactados</small><strong id="count-right">0</strong></div>
+            <div class="metric"><small>Pospuestos</small><strong id="count-left">0</strong></div>
+            <div class="metric"><small>Urgentes</small><strong id="count-up">0</strong></div>
+          </div>
+        </section>
+        <section class="card">
+          <h2 style="margin-bottom:var(--space-5)">Gestos que se reconocen</h2>
+          <table class="commands">
+            <thead><tr><th></th><th>Gesto</th><th>Acción en el CRM</th></tr></thead>
+            <tbody id="gesture-table">
+              <tr data-gesture="swipe-right"><td>👉</td><td>Deslizar a la derecha</td><td>Marcar como contactado</td></tr>
+              <tr data-gesture="swipe-left"><td>👈</td><td>Deslizar a la izquierda</td><td>Posponer una semana</td></tr>
+              <tr data-gesture="swipe-up"><td>☝️</td><td>Deslizar hacia arriba</td><td>Marcar como urgente</td></tr>
+              <tr data-gesture="doubletap"><td>✌️</td><td>Doble toque</td><td>Girar la tarjeta y ver contactos</td></tr>
+              <tr data-gesture="longpress"><td>✋</td><td>Pulsación larga</td><td>Menú: llamar, correo, nota</td></tr>
+              <tr data-gesture="pinch"><td>🤏</td><td>Pellizcar (2 dedos)</td><td>Ampliar el gráfico</td></tr>
+              <tr data-gesture="rotate"><td>🔄</td><td>Girar (2 dedos)</td><td>Rotar el gráfico</td></tr>
+              <tr data-gesture="shake"><td>📳</td><td>Agitar el móvil</td><td>Deshacer la última acción</td></tr>
+            </tbody>
+          </table>
+          <div class="btn-row" style="margin-top:var(--space-6)">
+            <button class="btn" id="shake-btn">Activar «agitar para deshacer»</button>
+          </div>
+        </section>
+        <section class="card">
+          <h2 style="margin-bottom:var(--space-5)">Registro de gestos</h2>
+          <ol class="log" id="log"></ol>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="gestos.js"></script>
+</body>
+</html>

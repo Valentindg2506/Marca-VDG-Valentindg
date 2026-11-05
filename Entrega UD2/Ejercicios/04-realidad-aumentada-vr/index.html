@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AR y VR · UD2</title>
+  <meta name="description" content="Ejercicio 4 de la UD2: realidad virtual y realidad aumentada con WebXR y A-Frame sobre los datos del CRM.">
+  <link rel="icon" href="../../CRM/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../shared/ejercicios.css">
+  <style>
+    .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8); }
+    .choice { display: grid; gap: var(--space-6); align-content: start; text-decoration: none; transition: transform .2s var(--ease-ui), box-shadow .2s; }
+    .choice:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .choice .art { display: grid; place-items: center; height: 170px; border-radius: var(--radius-tile); background: radial-gradient(circle at 50% 40%, #3d2729, #121116 75%); font-size: 64px; }
+    .choice ul { margin: 0; padding-left: 18px; color: var(--color-text-muted); }
+    .support { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  </style>
+</head>
+<body>
+  <main class="ex-main">
+    <div class="ex-head">
+      <span class="eyebrow">Ejercicio 4 · Realidad aumentada y virtual</span>
+      <h1>El CRM fuera de la pantalla</h1>
+      <p>Las mismas cifras del CRM en 3D con WebXR, el estándar del navegador para gafas y móviles, usando A-Frame (sobre Three.js). Funciona en gafas VR, en el móvil y en el ordenador.</p>
+      <div class="support" id="support"><span class="tag">Comprobando WebXR…</span></div>
+    </div>
+
+    <div class="choices">
+      <a class="card choice" href="vr.html">
+        <div class="art" aria-hidden="true">🥽</div>
+        <h2>Sala de ventas en VR</h2>
+        <ul>
+          <li>Facturación de 12 meses en barras 3D (facturado y cobrado).</li>
+          <li>Embudo de ventas: pulsa una oportunidad para avanzarla de etapa.</li>
+          <li>Paneles con el objetivo trimestral y lo pendiente de cobro.</li>
+          <li>Mandos con láser, cursor de mirada (1,5 s) o ratón y teclado.</li>
+        </ul>
+        <span class="btn accent">Entrar en la sala</span>
+      </a>
+      <a class="card choice" href="ar.html">
+        <div class="art" aria-hidden="true">📱</div>
+        <h2>Indicadores en AR</h2>
+        <ul>
+          <li>Un tótem con los indicadores se coloca sobre la mesa o el suelo (WebXR hit-test).</li>
+          <li>Sin WebXR: se dibuja sobre la imagen de la cámara y se orienta con el giroscopio.</li>
+          <li>Toca una barra para ver el mes; arrastra para girarlo.</li>
+        </ul>
+        <span class="btn accent">Abrir la AR</span>
+      </a>
+    </div>
+
+    <p class="note" style="margin-top:var(--space-8)"><strong>Para probarlo en el móvil o en las gafas</strong>, la página tiene que servirse por https (la cámara y WebXR no funcionan en http salvo en localhost). Por ejemplo, con GitHub Pages o con un túnel como <span class="mono">ngrok http 8000</span>. En Chrome de escritorio se puede simular con la extensión «Immersive Web Emulator».</p>
+  </main>
+  <script type="module">
+    import { header } from '../shared/common.js';
+    header('arvr');
+    const box = document.querySelector('#support');
+    const check = async mode => (await navigator.xr?.isSessionSupported?.(mode).catch(() => false)) ? `<span class="tag green">${mode === 'immersive-vr' ? 'VR' : 'AR'} disponible</span>` : `<span class="tag">${mode === 'immersive-vr' ? 'VR' : 'AR'} no disponible aquí</span>`;
+    Promise.all([check('immersive-vr'), check('immersive-ar')]).then(tags => {
+      box.innerHTML = `${navigator.xr ? '<span class="tag green">WebXR presente</span>' : '<span class="tag">Sin WebXR: modo ventana 3D</span>'}${tags.join('')}`;
+    });
+  </script>
+</body>
+</html>
